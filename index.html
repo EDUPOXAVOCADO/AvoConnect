@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AvoConnect | Lo que te une a la comunidad aguacate</title>
 
-  <!-- Estilos y Fuentes -->
+  <!-- Bootstrap & Fuentes -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --ac-green: #3fa34d;
@@ -15,29 +16,80 @@
       --ac-light: #f7fdfa;
       --ac-dark: #20341d;
     }
-    body { font-family: 'Inter', sans-serif; background: var(--ac-light); margin: 0; color: var(--ac-dark); }
-    .header-banner { height: 6px; background: var(--ac-green); }
-    header.main-header { background: var(--ac-green-dark); color: #fff; padding: 1rem 0; text-align: center; }
-    #site-title { font-size: 2rem; font-weight: 600; margin-left: 0.5rem; vertical-align: middle; }
-    #avocado { font-size: 2rem; vertical-align: middle;
-      animation: walk 2s ease-out forwards, sway 1s ease-in-out 1 2.5s forwards; display: inline-block; transform: translateX(-200px);
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ac-light);
+      margin: 0;
+      color: var(--ac-dark);
     }
-    @keyframes walk { to { transform: translateX(0); } }
-    @keyframes sway { 0%{transform:translateX(0) rotate(0deg);}25%{transform:translateX(0) rotate(15deg);}75%{transform:translateX(0) rotate(-15deg);}100%{transform:translateX(0) rotate(0deg);} }
-    nav.navbar { margin-bottom: 1rem; }
-    /* Noticias pequeño cuadrante */
-    section#noticias-pequeno { background: #fff; border: 1px solid var(--ac-green); border-radius: 8px; margin: 1rem auto; padding: 1rem; max-width: 600px; }
-    /* Valores y Frase */
-    section#informacion h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    blockquote { font-style: italic; color: var(--ac-green-dark); border-left: 4px solid var(--ac-green); padding-left: 1rem; }
-    /* Gráfica */
-    #priceChart { width: 100%; height: 400px; }
-    .chart-controls { margin-bottom: 1rem; }
-    footer { background: var(--ac-dark); color: #fff; text-align: center; padding: 1rem 0; }
+    .header-banner {
+      height: 6px;
+      background: var(--ac-green);
+    }
+    header.main-header {
+      background: var(--ac-green-dark);
+      color: #fff;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    #avocado {
+      font-size: 2rem;
+      vertical-align: middle;
+      display: inline-block;
+      transform: translateX(-200px);
+      animation: walk 2s ease-out forwards, sway 1s ease-in-out 1 2.5s forwards;
+    }
+    #site-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    @keyframes walk {
+      to { transform: translateX(0); }
+    }
+    @keyframes sway {
+      0%   { transform: translateX(0) rotate(0deg); }
+      25%  { transform: translateX(0) rotate(15deg); }
+      75%  { transform: translateX(0) rotate(-15deg); }
+      100% { transform: translateX(0) rotate(0deg); }
+    }
+    nav.navbar {
+      margin-bottom: 1rem;
+    }
+    /* Noticias pequeño recuadro */
+    #noticias-pequeno {
+      background: #fff;
+      border: 1px solid var(--ac-green);
+      border-radius: 8px;
+      margin: 1rem auto;
+      padding: 1rem;
+      max-width: 600px;
+    }
+    /* Información / Valores */
+    #informacion h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    blockquote {
+      font-style: italic;
+      color: var(--ac-green-dark);
+      border-left: 4px solid var(--ac-green);
+      padding-left: 1rem;
+    }
+    footer {
+      background: var(--ac-dark);
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+    }
   </style>
 </head>
+
 <body>
   <div class="header-banner"></div>
+
+  <!-- Header -->
   <header class="main-header">
     <span id="avocado">🥑</span>
     <span id="site-title">AvoConnect</span>
@@ -47,7 +99,9 @@
   <nav class="navbar navbar-expand-md navbar-dark bg-success">
     <div class="container">
       <a class="navbar-brand" href="#">AvoConnect</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav" aria-controls="navbarNav"
+              aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -57,46 +111,22 @@
           <li class="nav-item"><a class="nav-link" href="#exportacion">Exportación</a></li>
           <li class="nav-item"><a class="nav-link" href="#nacional">Nacional</a></li>
           <li class="nav-item"><a class="nav-link" href="#organico">Orgánico</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ingresar">Ingresar</a></li>
           <li class="nav-item"><a class="nav-link" href="#ayuda">Ayuda</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Cuadrante de noticias pequeño -->
+  <!-- Últimas noticias (RSS dinámico) -->
   <section id="noticias-pequeno" class="container py-5">
-    <h2>Últimas noticias de Michoacán</h2>
-    <ul id="news-list" class="list-unstyled">
-      <li>Cargando noticias...</li>
+    <h2>Últimas noticias</h2>
+    <ul id="news-list" class="list-unstyled mb-0">
+      <li>Cargando noticias…</li>
     </ul>
   </section>
 
-  <!-- Valores y Frase del día -->
-  <script>
-// Cargar noticias desde feed RSS de Quadratín usando AllOrigins para evitar CORS
-fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://www.quadratin.com.mx/michoacan/feed/'))
-  .then(response => {
-    if (!response.ok) throw new Error('Network response was not ok');
-    return response.text();
-  })
-  .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
-  .then(data => {
-    const list = document.getElementById('news-list');
-    list.innerHTML = '';
-    const items = data.querySelectorAll("item");
-    items.forEach((item, index) => {
-      if (index >= 5) return;
-      const title = item.querySelector("title").textContent;
-      const li = document.createElement('li');
-      li.textContent = title;
-      list.appendChild(li);
-    });
-  })
-  .catch(err => {
-    console.error('Error al cargar noticias:', err);
-    document.getElementById('news-list').innerHTML = '<li>No se pudieron cargar las noticias.</li>';
-  });
-</script>
+  <!-- Información: valores & frase -->
   <section id="informacion" class="container py-5">
     <div class="row gy-4">
       <div class="col-md-6">
@@ -110,22 +140,24 @@ fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://www.qu
     </div>
   </section>
 
-  <!-- Gráfica histórica propia -->
+  <!-- Gráfica histórica de exportaciones -->
   <section id="price-chart" class="container py-5">
-    <h2>Evolución de exportaciones de aguacate a EE.UU. (2019–2024)</h2>
-    <div class="chart-controls text-end">
-      <button id="btn5y" class="btn btn-sm btn-ac me-2">5 años</button>
-      <button id="btn1y" class="btn btn-sm btn-ac">1 año</button>
+    <h2>Evolución de exportaciones de aguacate (fresco/seco) desde México</h2>
+    <div class="ratio ratio-16x9">
+      <iframe
+        src="https://tradingeconomics.com/mexico/exports-of-avocados-fresh-or-dried?embed=1"
+        width="100%" height="100%" frameborder="0">
+      </iframe>
     </div>
-    <canvas id="priceChart"></canvas>
+    <p class="text-muted mt-2" style="font-size:0.9rem;">Fuente: Trading Economics</p>
   </section>
 
-  <!-- Secciones para contenido futuro -->
+  <!-- Secciones futuras -->
   <section id="empaques-autorizados" class="container py-5"></section>
-  <section id="#exportacion" class="container py-5"></section>
+  <section id="exportacion" class="container py-5"></section>
   <section id="nacional" class="container py-5"></section>
   <section id="organico" class="container py-5"></section>
-  <section id="#ayuda" class="container py-5"></section>
+  <section id="ayuda" class="container py-5"></section>
 
   <!-- Footer -->
   <footer>
@@ -134,74 +166,29 @@ fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://www.qu
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
   <script>
-    // Integración RSS => JSON (rss2json.com)
-    fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.quadratin.com.mx/Michoacan/feed/')
-      .then(resp => resp.json())
-      .then(data => {
-        const row = document.getElementById('news-row');
-        data.items.slice(0,3).forEach(item => {
-          const col = document.createElement('div');
-          col.className = 'col-12 col-md-4';
-          col.innerHTML = `
-            <div class="card border-0 shadow-sm">
-              <img src="${item.enclosure.link || 'https://via.placeholder.com/600x400?text=Sin+imagen'}" class="card-img-top" alt="${item.title}" />
-              <div class="card-body">
-                <h5 class="card-title">${item.title}</h5>
-              </div>
-            </div>`;
-          row.appendChild(col);
-        });
-      })
-      .catch(console.error);
+    document.addEventListener('DOMContentLoaded', () => {
+      const newsList = document.getElementById('news-list');
+      const rssUrl = 'https://www.quadratin.com.mx/Michoacan/feed/';
 
-    // Datos anuales de exportación a EE.UU. (millones USD)
-    const rawData = [
-      { year: 2019, value: 500 },
-      { year: 2020, value: 650 },
-      { year: 2021, value: 800 },
-      { year: 2022, value: 950 },
-      { year: 2023, value: 1100 },
-      { year: 2024, value: 1250 }
-    ];
-    const ctx = document.getElementById('priceChart').getContext('2d');
-    let chart;
-    function createChart(data) {
-      if (chart) chart.destroy();
-      chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: data.map(d => d.year),
-          datasets: [{
-            label: 'Exportaciones (millones USD)',
-            data: data.map(d => d.value),
-            borderColor: 'rgba(63, 163, 77, 1)',
-            backgroundColor: 'rgba(63, 163, 77, 0.2)',
-            fill: true,
-            tension: 0.1
-          }]
-        },
-        options: {
-          responsive: true,
-          interaction: { mode: 'index', intersect: false },
-          scales: {
-            x: { title: { display: true, text: 'Año' } },
-            y: { title: { display: true, text: 'Millones USD' } }
-          },
-          plugins: {
-            zoom: {
-              pan: { enabled: true, mode: 'x' },
-              zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' }
-            }
-          }
-        }
-      });
-    }
-    document.getElementById('btn5y').addEventListener('click', () => createChart(rawData));
-    document.getElementById('btn1y').addEventListener('click', () => createChart(rawData.slice(-2)));
-    createChart(rawData);
+      fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`)
+        .then(response => {
+          if (!response.ok) throw new Error('Error de red');
+          return response.text();
+        })
+        .then(xmlString => {
+          const doc = new DOMParser().parseFromString(xmlString, "application/xml");
+          const items = Array.from(doc.querySelectorAll('item')).slice(0, 5);
+          newsList.innerHTML = items.map(item => {
+            const title = item.querySelector('title')?.textContent || 'Sin título';
+            return `<li>${title}</li>`;
+          }).join('');
+        })
+        .catch(err => {
+          console.error(err);
+          newsList.innerHTML = '<li>No se pudieron cargar noticias.</li>';
+        });
+    });
   </script>
 </body>
 </html>
