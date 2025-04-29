@@ -5,29 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>AvoConnect | Precios de aguacate & Venta de lotes</title>
 
+  <!-- Sección: Estilos y Fuentes -->
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- Inter Font -->
+  <!-- Fuente Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-
   <style>
     :root {
       --ac-green: #3fa34d;
       --ac-dark: #20341d;
       --ac-light: #f7fdfa;
     }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--ac-light);
-      color: var(--ac-dark);
-    }
+    body { font-family: 'Inter', sans-serif; background: var(--ac-light); color: var(--ac-dark); }
+
+    /* Banner superior */
     .header-banner { height:6px; background: var(--ac-green); }
-    header { background:#fff; padding:2rem 0 1rem; text-align:center; position:relative; }
-    #site-title { font-size:3.5rem; font-weight:600; margin:0 1rem; display:inline-block; vertical-align:middle; }
-    #avocado { font-size:3.5rem; display:inline-block; vertical-align:middle;
-      transform: translateX(-200px);
+
+    /* Encabezado */
+    header { background:#fff; padding:2rem 0 1rem; text-align:center; }
+    #avocado { font-size:2rem; display:inline-block; vertical-align:middle; transform: translateX(-200px);
       animation: walk 2s ease-out forwards, sway 1s ease-in-out 1 2.5s forwards;
     }
+    #site-title { font-size:2.5rem; font-weight:600; margin-left:0.5rem; display:inline-block; vertical-align:middle; }
     @keyframes walk { to { transform: translateX(0); } }
     @keyframes sway {
       0% { transform: translateX(0) rotate(0deg); }
@@ -35,30 +34,36 @@
       75% { transform: translateX(0) rotate(-15deg); }
       100% { transform: translateX(0) rotate(0deg); }
     }
+
+    /* Botones */
     .btn-ac { background: var(--ac-green); color:#fff; border:none; }
     .btn-ac:hover { background:#2e7e3a; }
-    h2 { font-weight:600; margin-top:2rem; }
+
+    /* Sección: Galería de imágenes */
     .img-fluid, .gallery img, .card-img-top { width:100%; height:200px; border-radius:8px; object-fit:cover; }
+
+    /* Títulos de sección */
+    h2 { font-weight:600; margin-top:2rem; }
   </style>
 </head>
 <body>
 
+  <!-- Sección: Banner superior -->
   <div class="header-banner"></div>
+
+  <!-- Sección: Encabezado -->
   <header>
-    <div>
-      <!-- Emoji aguacate animado -->
-      <span id="avocado">🥑</span>
-      <span id="site-title">AvoConnect</span>
-    </div>
+    <span id="avocado">🥑</span>
+    <span id="site-title">AvoConnect</span>
   </header>
 
-  <!-- Hero -->
-  <section class="container text-center">
+  <!-- Sección: Hero -->
+  <section class="container text-center py-4">
     <p class="lead mb-4">Compara lo que paga cada empacadora según gramaje y origen (nacional o exportación).</p>
     <a class="btn btn-ac btn-lg" href="#">Avísenme cuando salga</a>
   </section>
 
-  <!-- Galería de portada con placeholders -->
+  <!-- Sección: Galería de portada -->
   <section class="container gallery my-5">
     <div class="row g-3">
       <div class="col-md-4"><img src="https://via.placeholder.com/600x400?text=Aguacate+Fresco" alt="Aguacate fresco" class="img-fluid"/></div>
@@ -67,13 +72,14 @@
     </div>
   </section>
 
-  <!-- Tableros de precios -->
-  <section class="container">
+  <!-- Sección: Tableros de precios -->
+  <section class="container py-4">
     <h2 class="text-center">Tableros de precios</h2>
     <div class="row g-4 my-4">
+      <!-- Sub-sección: Por empaque -->
       <div class="col-md-6">
         <div class="card shadow-sm border-0">
-          <div class="card-header bg-light"><h5 class="mb-0">Tablero de precios por empaque</h5></div>
+          <div class="card-header bg-light"><h5 class="mb-0">Por empaque</h5></div>
           <div class="table-responsive">
             <table class="table mb-0">
               <thead><tr><th>Empacadora</th><th>Precio (MXN/kg)</th><th></th></tr></thead>
@@ -82,9 +88,10 @@
           </div>
         </div>
       </div>
+      <!-- Sub-sección: Por gramaje -->
       <div class="col-md-6">
         <div class="card shadow-sm border-0">
-          <div class="card-header bg-light"><h5 class="mb-0">Precio por gramaje</h5></div>
+          <div class="card-header bg-light"><h5 class="mb-0">Por gramaje</h5></div>
           <div class="table-responsive">
             <table class="table mb-0">
               <thead><tr><th>Gramaje (g)</th><th>Precio (MXN)</th><th></th></tr></thead>
@@ -96,9 +103,9 @@
     </div>
   </section>
 
-  <!-- Recomendaciones -->
+  <!-- Sección: Recomendaciones -->
   <section class="container border-top py-5">
-    <h2 class="text-center">Recomendaciones de empacadoras</h2>
+    <h2 class="text-center">Recomendaciones</h2>
     <div class="row g-4 mt-3">
       <div class="col-md-4">
         <div class="card h-100 shadow-sm text-center">
@@ -108,20 +115,20 @@
       </div>
       <div class="col-md-4">
         <div class="card h-100 shadow-sm text-center">
-          <img src="https://via.placeholder.com/600x400?text=Empacadora+Exportación" class="card-img-top" alt="Empacadora Exportación"/>
-          <div class="card-body"><h5 class="card-title">ExportaPlus</h5><p class="card-text">Especializada en exportación, cumple FDA y UE.</p></div>
+          <img src="https://via.placeholder.com/600x400?text=Empacadora+Exportaci%C3%B3n" class="card-img-top" alt="Empacadora Exportación"/>
+          <div class="card-body"><h5 class="card-title">ExportaPlus</h5><p class="card-text">Especializada en exportación.</p></div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="card h-100 shadow-sm text-center">
-          <img src="https://via.placeholder.com/600x400?text=Empacadora+Orgánico" class="card-img-top" alt="Empacadora Orgánico"/>
-          <div class="card-body"><h5 class="card-title">OrganoAvo</h5><p class="card-text">100% orgánica, certificada por EcoCert.</p></div>
+          <img src="https://via.placeholder.com/600x400?text=Org%C3%A1nico" class="card-img-top" alt="Orgánico"/>
+          <div class="card-body"><h5 class="card-title">OrganoAvo</h5><p class="card-text">100% orgánica, certificada EcoCert.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Sección de edición -->
+  <!-- Sección: Edición de registros -->
   <section id="edit-section" class="container py-5" style="display:none;">
     <h2 class="text-center">Editar registro</h2>
     <form id="edit-form" class="mx-auto" style="max-width:400px;">
@@ -131,37 +138,53 @@
     </form>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3"><small>&copy; 2025 AvoConnect · Hecho en Uruapan con ❤️ y mucho aguacate</small></footer>
+  <!-- Sección: Pie de página -->
+  <footer class="bg-dark text-white text-center py-3"><small>&copy; 2025 AvoConnect · Hecho en Uruapan con ❤️</small></footer>
 
+  <!-- Sección: Scripts y lógica -->
   <script>
     const isDirector = true;
-    const dataByEmpaque = [
-      { name: 'Empacadora A', price: 22 },
-      { name: 'Empacadora B', price: 20 },
-      { name: 'Empacadora C', price: 18 }
-    ];
-    const dataByGramaje = [
-      { gramos: 50, price: 10 },
-      { gramos: 70, price: 14 },
-      { gramos: 100, price: 20 }
-    ];
+    const dataByEmpaque = [ { name: 'Empacadora A', price: 22 }, { name: 'Empacadora B', price: 20 }, { name: 'Empacadora C', price: 18 } ];
+    const dataByGramaje = [ { gramos: 50, price: 10 }, { gramos: 70, price: 14 }, { gramos: 100, price: 20 } ];
+    
     function renderTables() {
       ['empaque','gramaje'].forEach(mode => {
         const tbody = document.getElementById('table-'+mode);
         tbody.innerHTML = '';
         const arr = mode==='empaque'?dataByEmpaque:dataByGramaje;
         arr.sort((a,b)=>b.price-a.price).forEach((item,i)=>{
-          const tr=document.createElement('tr');
-          if(mode==='empaque') tr.innerHTML = `<td>${item.name}</td><td>${item.price.toFixed(2)}</td><td>${isDirector?`<button class="btn btn-sm btn-primary edit-btn" data-mode="empaque" data-index="${i}">Editar</button>`:''}</td>`;
-          else tr.innerHTML = `<td>${item.gramos}</td><td>${item.price.toFixed(2)}</td><td>${isDirector?`<button class="btn btn-sm btn-primary edit-btn" data-mode="gramaje" data-index="${i}">Editar</button>`:''}</td>`;
+          const tr = document.createElement('tr');
+          if(mode==='empaque') tr.innerHTML = `<td>${item.name}</td><td>${item.price.toFixed(2)}</td><td>${isDirector?`<button class=\"btn btn-sm btn-primary edit-btn\" data-mode=\"empaque\" data-index=\"${i}\">Editar</button>`:''}</td>`;
+          else tr.innerHTML = `<td>${item.gramos}</td><td>${item.price.toFixed(2)}</td><td>${isDirector?`<button class=\"btn btn-sm btn-primary edit-btn\" data-mode=\"gramaje\" data-index=\"${i}\">Editar</button>`:''}</td>`;
           tbody.appendChild(tr);
         });
-      });attachEditListeners();
+      });
+      attachEditListeners();
     }
-    function attachEditListeners(){document.querySelectorAll('.edit-btn').forEach(btn=>btn.onclick=()=>showEditForm(btn.dataset.mode,btn.dataset.index));}
-    function showEditForm(mode,idx){const sec=document.getElementById('edit-section'),cnt=document.getElementById('edit-fields');cnt.innerHTML='';const item=mode==='empaque'?{...dataByEmpaque[idx]}:{...dataByGramaje[idx]};if(mode==='empaque')cnt.innerHTML+=`<label>Nombre de empacadora</label><input class="form-control mb-3" id="edit-name" value="${item.name}"/>`;else cnt.innerHTML+=`<label>Gramaje (g)</label><input class="form-control mb-3" id="edit-gramos" type="number" value="${item.gramos}"/>`;cnt.innerHTML+=`<label>Precio (MXN)</label><input class="form-control mb-3" id="edit-price" type="number" step="0.01" value="${item.price}"/>`;sec.style.display='block';sec.scrollIntoView({behavior:'smooth'});document.getElementById('edit-form').onsubmit=e=>{e.preventDefault();if(mode==='empaque')dataByEmpaque[idx].name=document.getElementById('edit-name').value;else dataByGramaje[idx].gramos=parseFloat(document.getElementById('edit-gramos').value);(mode==='empaque'?dataByEmpaque[idx]:dataByGramaje[idx]).price=parseFloat(document.getElementById('edit-price').value);sec.style.display='none';renderTables();};document.getElementById('cancel-btn').onclick=()=>sec.style.display='none';}
-    document.addEventListener('DOMContentLoaded',renderTables);
+
+    function attachEditListeners() {
+      document.querySelectorAll('.edit-btn').forEach(btn => btn.onclick = () => showEditForm(btn.dataset.mode, btn.dataset.index));
+    }
+
+    function showEditForm(mode, idx) {
+      const sec = document.getElementById('edit-section'), cnt = document.getElementById('edit-fields');
+      cnt.innerHTML = '';
+      const item = mode==='empaque'?{...dataByEmpaque[idx]}:{...dataByGramaje[idx]};
+      if(mode==='empaque') cnt.innerHTML += `<label>Nombre de empacadora</label><input class=\"form-control mb-3\" id=\"edit-name\" value=\"${item.name}\"/>`; else cnt.innerHTML += `<label>Gramaje (g)</label><input class=\"form-control mb-3\" id=\"edit-gramos\" type=\"number\" value=\"${item.gramos}\"/>`;
+      cnt.innerHTML += `<label>Precio (MXN)</label><input class=\"form-control mb-3\" id=\"edit-price\" type=\"number\" step=\"0.01\" value=\"${item.price}\"/>`;
+      sec.style.display = 'block'; sec.scrollIntoView({ behavior: 'smooth' });
+
+      document.getElementById('edit-form').onsubmit = e => {
+        e.preventDefault();
+        if(mode==='empaque') dataByEmpaque[idx].name = document.getElementById('edit-name').value;
+        else dataByGramaje[idx].gramos = parseFloat(document.getElementById('edit-gramos').value);
+        (mode==='empaque'?dataByEmpaque[idx]:dataByGramaje[idx]).price = parseFloat(document.getElementById('edit-price').value);
+        sec.style.display = 'none'; renderTables();
+      };
+      document.getElementById('cancel-btn').onclick = () => sec.style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', renderTables);
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
