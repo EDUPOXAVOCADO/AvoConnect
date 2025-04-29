@@ -15,74 +15,39 @@
       --ac-light: #f7fdfa;
       --ac-dark: #20341d;
     }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--ac-light);
-      margin: 0;
-      color: var(--ac-dark);
-    }
+    body { font-family: 'Inter', sans-serif; background: var(--ac-light); margin: 0; color: var(--ac-dark); }
     .header-banner { height: 6px; background: var(--ac-green); }
-    header.main-header {
-      background: var(--ac-green-dark);
-      color: #fff;
-      padding: 1rem 0;
-      text-align: center;
-    }
-    header.main-header #site-title {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-left: 0.5rem;
-      vertical-align: middle;
-    }
-    header.main-header #avocado {
-      font-size: 2rem;
-      vertical-align: middle;
-      animation: walk 2s ease-out forwards, sway 1s ease-in-out 1 2.5s forwards;
-      display: inline-block;
-      transform: translateX(-200px);
-    }
+    header.main-header { background: var(--ac-green-dark); color: #fff; padding: 1rem 0; text-align: center; }
+    header.main-header #site-title { font-size: 2rem; font-weight: 600; margin-left: 0.5rem; vertical-align: middle; }
+    header.main-header #avocado { font-size: 2rem; vertical-align: middle; animation: walk 2s ease-out forwards, sway 1s ease-in-out 1 2.5s forwards; display: inline-block; transform: translateX(-200px); }
     @keyframes walk { to { transform: translateX(0); } }
-    @keyframes sway {
-      0% { transform: translateX(0) rotate(0deg); }
-      25% { transform: translateX(0) rotate(15deg); }
-      75% { transform: translateX(0) rotate(-15deg); }
-      100% { transform: translateX(0) rotate(0deg); }
-    }
-    nav.nav-apartados {
-      background: var(--ac-green);
-      padding: 0.5rem 0;
-    }
-    nav.nav-apartados .nav-link {
-      color: #fff;
-      padding: 0.75rem 1rem;
-      font-weight: 500;
-    }
-    nav.nav-apartados .nav-link:hover {
-      background: var(--ac-green-dark);
-      color: #fff;
-    }
-    footer {
-      background: var(--ac-dark);
-      color: #fff;
-      text-align: center;
-      padding: 1rem 0;
-    }
+    @keyframes sway {0%{transform:translateX(0) rotate(0deg);}25%{transform:translateX(0) rotate(15deg);}75%{transform:translateX(0) rotate(-15deg);}100%{transform:translateX(0) rotate(0deg);}}
+    nav.nav-apartados { background: var(--ac-green); padding: 0.5rem 0; }
+    nav.nav-apartados .nav-link { color: #fff; padding: 0.75rem 1rem; font-weight: 500; }
+    nav.nav-apartados .nav-link:hover { background: var(--ac-green-dark); color: #fff; }
+    /* Noticias pequeño cuadrante */
+    section#noticias-pequeno { background: #fff; border: 1px solid var(--ac-green); border-radius: 8px; margin: 1rem auto; padding: 1rem; max-width: 600px; }
+    section#noticias-pequeno h2 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+    #news-list { list-style: none; padding: 0; margin: 0; max-height: 200px; overflow-y: auto; }
+    #news-list li { margin-bottom: 0.5rem; }
+    /* Valores y Frase */
+    section#informacion h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    section#informacion p { font-size: 1rem; }
+    blockquote { font-style: italic; color: var(--ac-green-dark); border-left: 4px solid var(--ac-green); padding-left: 1rem; }
+    footer { background: var(--ac-dark); color: #fff; text-align: center; padding: 1rem 0; }
   </style>
 </head>
 <body>
-
   <div class="header-banner"></div>
-
   <header class="main-header">
     <span id="avocado">🥑</span>
     <span id="site-title">AvoConnect</span>
   </header>
-
   <!-- Navegación de apartados -->
   <nav class="nav-apartados">
     <div class="container d-flex justify-content-center flex-wrap">
       <a class="nav-link" href="#informacion">Información</a>
-      <a class="nav-link" href="#empaques-autorizados">Empaques autorizados</a>
+      <a class="nav-link" href="#empaques-autorizados">Empaques</a>
       <a class="nav-link" href="#exportacion">Exportación</a>
       <a class="nav-link" href="#nacional">Nacional</a>
       <a class="nav-link" href="#organico">Orgánico</a>
@@ -90,30 +55,40 @@
     </div>
   </nav>
 
-  <!-- Secciones para contenido futuro -->
+  <!-- Cuadrante de noticias pequeño -->
+  <section id="noticias-pequeno" class="container">
+    <h2>Últimas noticias</h2>
+    <ul id="news-list">
+      <li><a href="#">Titular de noticia 1 de Michoacán</a></li>
+      <li><a href="#">Titular de noticia 2 de Michoacán</a></li>
+      <li><a href="#">Titular de noticia 3 de Michoacán</a></li>
+    </ul>
+  </section>
+
+  <!-- Valores y Frase del día -->
   <section id="informacion" class="container py-5">
-    <!-- Contenido: Información -->
+    <div class="row gy-4">
+      <div class="col-md-6">
+        <h2>Valores de la comunidad</h2>
+        <p>“Innovación, transparencia y sostenibilidad: cultivamos liderazgo juntos.”</p>
+      </div>
+      <div class="col-md-6">
+        <h2>Frase del día</h2>
+        <blockquote>“En Michoacán, cultivamos más que aguacates; cultivamos comunidad.”</blockquote>
+      </div>
+    </div>
   </section>
-  <section id="empaques-autorizados" class="container py-5">
-    <!-- Contenido: Empaques autorizados -->
-  </section>
-  <section id="exportacion" class="container py-5">
-    <!-- Contenido: Exportación -->
-  </section>
-  <section id="nacional" class="container py-5">
-    <!-- Contenido: Nacional -->
-  </section>
-  <section id="organico" class="container py-5">
-    <!-- Contenido: Orgánico -->
-  </section>
-  <section id="ayuda" class="container py-5">
-    <!-- Contenido: Ayuda -->
-  </section>
+
+  <!-- Secciones para contenido futuro -->
+  <section id="empaques-autorizados" class="container py-5"></section>
+  <section id="exportacion" class="container py-5"></section>
+  <section id="nacional" class="container py-5"></section>
+  <section id="organico" class="container py-5"></section>
+  <section id="ayuda" class="container py-5"></section>
 
   <footer>
     <small>&copy; 2025 AvoConnect · Hecho en Uruapan con ❤️</small>
   </footer>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
