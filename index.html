@@ -73,23 +73,30 @@
 
   <!-- Valores y Frase del día -->
   <script>
-    // Cargar noticias desde feed RSS de Quadratín Michoacán
-    fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.quadratin.com.mx/Michoacan/feed/')
-      .then(response => response.json())
-      .then(data => {
-        const list = document.getElementById('news-list');
-        list.innerHTML = '';
-        data.items.slice(0,5).forEach(item => {
-          const li = document.createElement('li');
-          li.innerText = item.title;
-          list.appendChild(li);
-        });
-      })
-      .catch(err => {
-        console.error('Error al cargar noticias:', err);
-        document.getElementById('news-list').innerHTML = '<li>No se pudieron cargar las noticias.</li>';
-      });
-  </script>
+// Cargar noticias desde feed RSS de Quadratín usando AllOrigins para evitar CORS
+fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://www.quadratin.com.mx/michoacan/feed/'))
+  .then(response => {
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.text();
+  })
+  .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+  .then(data => {
+    const list = document.getElementById('news-list');
+    list.innerHTML = '';
+    const items = data.querySelectorAll("item");
+    items.forEach((item, index) => {
+      if (index >= 5) return;
+      const title = item.querySelector("title").textContent;
+      const li = document.createElement('li');
+      li.textContent = title;
+      list.appendChild(li);
+    });
+  })
+  .catch(err => {
+    console.error('Error al cargar noticias:', err);
+    document.getElementById('news-list').innerHTML = '<li>No se pudieron cargar las noticias.</li>';
+  });
+</script>
   <section id="informacion" class="container py-5">
     <div class="row gy-4">
       <div class="col-md-6">
