@@ -15,6 +15,9 @@
     rel="stylesheet"
   />
 
+  <!-- Feednami para RSS sin CORS -->
+  <script src="https://feednami.com/assets/js/feednami-client-v1.2.js"></script>
+
   <!-- Chart.js & plugins -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
@@ -150,11 +153,11 @@
     </div>
   </nav>
 
-  <!-- Últimas noticias (feed nacional) -->
+  <!-- Últimas noticias (Feednami) -->
   <section id="noticias-pequeno" class="container py-5">
     <h2>Últimas noticias</h2>
     <div id="news-container" class="row gy-4">
-      <!-- Aquí se inyectarán los cards -->
+      <p>Cargando noticias…</p>
     </div>
   </section>
 
@@ -197,31 +200,29 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // ====== Noticias: RSS en JSON (El Universal Nacional) ======
-    document.addEventListener('DOMContentLoaded', () => {
+    // ====== Noticias: Feednami RSS ======
+    document.addEventListener('DOMContentLoaded', function() {
       const container = document.getElementById('news-container');
-      const feedUrl = 'https://www.eluniversal.com.mx/nacion/rss.xml';
-      fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}&count=3`)
-        .then(res => res.json())
-        .then(json => {
-          container.innerHTML = json.items.map(item => `
+      feednami.load('https://www.eluniversal.com.mx/nacion/rss.xml', function(result) {
+        if (result.error) {
+          container.innerHTML = '<p>No se pudieron cargar noticias.</p>';
+        } else {
+          const entries = result.feed.entries.slice(0, 3);
+          container.innerHTML = entries.map(entry => `
             <div class="col-12 col-md-4">
               <div class="card">
-                <img src="${item.thumbnail || item.enclosure.link || 'https://via.placeholder.com/600x400?text=Sin+imagen'}"
-                     class="card-img-top" alt="${item.title}">
+                <img src="${entry.media || entry.enclosure?.url || 'https://via.placeholder.com/600x400?text=Sin+imagen'}"
+                     class="card-img-top" alt="${entry.title}">
                 <div class="card-body">
-                  <a href="${item.link}" target="_blank" class="stretched-link text-decoration-none">
-                    <h5 class="card-title">${item.title}</h5>
+                  <a href="${entry.link}" target="_blank" class="stretched-link text-decoration-none">
+                    <h5 class="card-title">${entry.title}</h5>
                   </a>
                 </div>
               </div>
             </div>
           `).join('');
-        })
-        .catch(err => {
-          console.error(err);
-          container.innerHTML = '<p>No se pudieron cargar noticias.</p>';
-        });
+        }
+      });
     });
 
     // ====== Gráfica con Chart.js ======
