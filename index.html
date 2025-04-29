@@ -80,7 +80,6 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       border-radius: 8px;
       overflow: hidden;
-      cursor: pointer;
       position: relative;
     }
     #news-container .card img {
@@ -145,7 +144,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#informacion">Información</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#informacion">Información</a>
+          </li>
           <li class="nav-item"><a class="nav-link" href="#empaques-autorizados">Empaques</a></li>
           <li class="nav-item"><a class="nav-link" href="#exportacion">Exportación</a></li>
           <li class="nav-item"><a class="nav-link" href="#nacional">Nacional</a></li>
@@ -165,8 +166,8 @@
     </div>
   </section>
 
-  <!-- Información sobre AvoConnect -->
-  <section id="informacion" class="container py-5">
+  <!-- Información sobre AvoConnect (oculto hasta click) -->
+  <section id="informacion" class="container py-5 d-none">
     <h2 class="mb-4">Información sobre AvoConnect</h2>
     <div class="row gy-5">
       <!-- 1. ¿Quiénes somos? -->
@@ -180,7 +181,6 @@
           conexiones de negocio de manera ágil y segura.
         </p>
       </div>
-
       <!-- 2. ¿Qué hacemos? -->
       <div class="col-12">
         <h3>¿Qué hacemos?</h3>
@@ -191,7 +191,6 @@
           transacciones sin intermediarios innecesarios.
         </p>
       </div>
-
       <!-- 3. ¿Por qué elegirnos? -->
       <div class="col-12">
         <h3>¿Por qué elegirnos?</h3>
@@ -201,7 +200,6 @@
           <li><strong>Cobertura:</strong> acceso a empacadoras nacionales y de exportación.</li>
         </ul>
       </div>
-
       <!-- 4. Nuestros valores -->
       <div class="col-12">
         <h3>Nuestros valores</h3>
@@ -212,7 +210,6 @@
           etapa de la cadena.
         </p>
       </div>
-
       <!-- 5. ¿Para quién es? -->
       <div class="col-12">
         <h3>¿Para quién es?</h3>
@@ -222,7 +219,6 @@
           distribuidores interesados en garantizar calidad y trazabilidad.
         </p>
       </div>
-
       <!-- 6. Equipo y aliados -->
       <div class="col-12">
         <h3>Equipo y aliados</h3>
@@ -233,7 +229,6 @@
           certificación para garantizar la más alta calidad.
         </p>
       </div>
-
       <!-- 7. Cómo empezar -->
       <div class="col-12">
         <h3>Cómo empezar</h3>
@@ -247,7 +242,6 @@
           <a href="#ingresar" class="btn btn-ac">Regístrate ahora</a>
         </p>
       </div>
-
       <!-- 8. Preguntas frecuentes -->
       <div class="col-12">
         <h3>Preguntas frecuentes</h3>
@@ -258,14 +252,12 @@
             cobramos una suscripción anual a empacadoras para acceder a
             estadísticas avanzadas.
           </dd>
-
           <dt>¿Cómo certifican a las empacadoras?</dt>
           <dd>
             Trabajamos con organismos acreditados (SAGARPA, Ecocert, FDA) para
             validar trazabilidad, manejo fitosanitario y condiciones de
             empaque.
           </dd>
-
           <dt>¿En qué horarios funciona el soporte?</dt>
           <dd>
             Nuestro equipo de atención está disponible de lunes a viernes de
@@ -326,7 +318,17 @@
   }
   </script>
 
-  <!-- Chart.js init -->
+  <!-- Mostrar sección de Información al hacer click -->
+  <script>
+    document.querySelector('a.nav-link[href="#informacion"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      const info = document.getElementById('informacion');
+      info.classList.remove('d-none');
+      info.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Chart.js init (sin cambios) -->
   <script>
   (function(){
     const rawData = [
