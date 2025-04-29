@@ -66,25 +66,8 @@
   <!-- Cuadrante de noticias pequeño -->
   <section id="noticias-pequeno" class="container py-5">
     <h2>Últimas noticias</h2>
-    <div class="row gy-4">
-      <div class="col-12 col-md-4">
-        <div class="card border-0 shadow-sm">
-          <img src="https://via.placeholder.com/600x400?text=Noticia+1" class="card-img-top" alt="Noticia 1">
-          <div class="card-body"><h5 class="card-title">Titular destacado de la noticia 1</h5></div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="card border-0 shadow-sm">
-          <img src="https://via.placeholder.com/600x400?text=Noticia+2" class="card-img-top" alt="Noticia 2">
-          <div class="card-body"><h5 class="card-title">Titular destacado de la noticia 2</h5></div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="card border-0 shadow-sm">
-          <img src="https://via.placeholder.com/600x400?text=Noticia+3" class="card-img-top" alt="Noticia 3">
-          <div class="card-body"><h5 class="card-title">Titular destacado de la noticia 3</h5></div>
-        </div>
-      </div>
+    <div class="row gy-4" id="news-row">
+      <!-- Noticias cargarán aquí dinámicamente -->
     </div>
   </section>
 
@@ -121,7 +104,7 @@
 
   <!-- Footer -->
   <footer>
-    <small>&copy; 2025 AvoConnect · Hecho en Uruapan con ❤️ </small>
+    <small>&copy; 2025 AvoConnect · Hecho en Uruapan con ❤️</small>
   </footer>
 
   <!-- Scripts -->
@@ -129,6 +112,26 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
   <script>
+    // Integración RSS => JSON (rss2json.com)
+    fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.quadratin.com.mx/Michoacan/feed/')
+      .then(resp => resp.json())
+      .then(data => {
+        const row = document.getElementById('news-row');
+        data.items.slice(0,3).forEach(item => {
+          const col = document.createElement('div');
+          col.className = 'col-12 col-md-4';
+          col.innerHTML = `
+            <div class="card border-0 shadow-sm">
+              <img src="${item.enclosure.link || 'https://via.placeholder.com/600x400?text=Sin+imagen'}" class="card-img-top" alt="${item.title}" />
+              <div class="card-body">
+                <h5 class="card-title">${item.title}</h5>
+              </div>
+            </div>`;
+          row.appendChild(col);
+        });
+      })
+      .catch(console.error);
+
     // Datos anuales de exportación a EE.UU. (millones USD)
     const rawData = [
       { year: 2019, value: 500 },
