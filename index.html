@@ -65,13 +65,31 @@
 
   <!-- Cuadrante de noticias pequeño -->
   <section id="noticias-pequeno" class="container py-5">
-    <h2>Últimas noticias</h2>
-    <div class="row gy-4" id="news-row">
-      <!-- Noticias cargarán aquí dinámicamente -->
-    </div>
+    <h2>Últimas noticias de Michoacán</h2>
+    <ul id="news-list" class="list-unstyled">
+      <li>Cargando noticias...</li>
+    </ul>
   </section>
 
   <!-- Valores y Frase del día -->
+  <script>
+    // Cargar noticias desde feed RSS de Quadratín Michoacán
+    fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.quadratin.com.mx/Michoacan/feed/')
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById('news-list');
+        list.innerHTML = '';
+        data.items.slice(0,5).forEach(item => {
+          const li = document.createElement('li');
+          li.innerText = item.title;
+          list.appendChild(li);
+        });
+      })
+      .catch(err => {
+        console.error('Error al cargar noticias:', err);
+        document.getElementById('news-list').innerHTML = '<li>No se pudieron cargar las noticias.</li>';
+      });
+  </script>
   <section id="informacion" class="container py-5">
     <div class="row gy-4">
       <div class="col-md-6">
