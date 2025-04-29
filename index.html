@@ -26,9 +26,45 @@
       background: var(--ac-light);
       color: var(--ac-dark);
     }
-    .navbar {
-      background: var(--ac-green);
+    /* ----- Cabecera animada ----- */
+    header {
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      padding: 4rem 0;
+      margin-bottom: 2rem;
     }
+    #header-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #site-title {
+      font-size: 3.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    #avocado {
+      position: absolute;
+      left: -60px;
+      width: 60px;
+      bottom: calc(50% - 30px);
+      /* camina y luego se balancea */
+      animation: walk 2s ease-out forwards,
+                 sway 1s ease-in-out 1 2.5s forwards;
+    }
+    @keyframes walk {
+      to { left: calc(50% - 150px); } /* llega cerca de la “A” */
+    }
+    @keyframes sway {
+      0%   { transform: rotate(0deg); }
+      25%  { transform: rotate(15deg); }
+      75%  { transform: rotate(-15deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* ----- Botones y cards ----- */
     .btn-ac {
       background: var(--ac-green);
       color: #fff;
@@ -37,119 +73,145 @@
     .btn-ac:hover {
       background: #2e7e3a;
     }
-    h1 {
-      font-size: 3rem; /* un poco más grande */
-      font-weight: 600;
-    }
-    .shadow-sm {
-      box-shadow: 0 6px 12px rgba(0,0,0,.05) !important;
-    }
-    .gallery img {
+    .shadow-sm { box-shadow: 0 6px 12px rgba(0,0,0,.05)!important; }
+    h2 { font-weight: 600; margin-top: 2rem; }
+    .gallery img, .card-img-top, .img-fluid {
       border-radius: 8px;
       object-fit: cover;
-      height: 200px;
-      width: 100%;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navegación -->
-  <nav class="navbar px-3">
-    <span class="navbar-brand mb-0 h1 text-white">🥑 AvoConnect</span>
-  </nav>
+  <!-- Cabecera con animación -->
+  <header>
+    <div id="header-container">
+      <img id="avocado"
+           src="https://twemoji.maxcdn.com/v/latest/72x72/1f951.png"
+           alt="Aguacatito caminando"/>
+      <h1 id="site-title">AvoConnect</h1>
+    </div>
+  </header>
 
   <!-- Hero -->
-  <section class="container text-center py-5">
-    <h1>Precios de aguacate, al minuto.</h1>
-    <p class="lead">
+  <section class="container text-center">
+    <p class="lead mb-4">
       Compara lo que paga cada empacadora según gramaje y origen (nacional o exportación).
     </p>
     <a class="btn btn-ac btn-lg" href="#">Avísenme cuando salga</a>
   </section>
 
   <!-- Galería de portada -->
-  <section class="container gallery mb-5">
+  <section class="container gallery my-5">
     <div class="row g-3">
       <div class="col-md-4">
-        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600&q=60" alt="Aguacates en rama">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=60"
+             alt="Aguacate fresco" height="200"/>
       </div>
       <div class="col-md-4">
-        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=60" alt="Cajas de aguacate">
+        <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=600&q=60"
+             alt="Corte de aguacate" height="200"/>
       </div>
       <div class="col-md-4">
-        <img src="https://images.unsplash.com/photo-1574226516831-e1dff420e43e?auto=format&fit=crop&w=600&q=60" alt="Corte de aguacate">
+        <img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=600&q=60"
+             alt="Productor cortando aguacate" height="200"/>
       </div>
     </div>
   </section>
 
-  <!-- Beneficios -->
-  <section class="container py-5">
-    <div class="row g-4">
+  <!-- Tableros de precios -->
+  <section class="container">
+    <h2 class="text-center">Tableros de precios</h2>
+    <div class="row g-4 my-4">
+      <!-- Por empaque -->
       <div class="col-md-6">
-        <div class="card h-100 shadow-sm border-0 text-center">
-          <img src="https://images.unsplash.com/photo-1524594155901-436fc637b87c?auto=format&fit=crop&w=600&q=60"
-               class="card-img-top" alt="Tablero de precios">
-          <div class="card-body">
-            <h5 class="card-title">Tablero de precios</h5>
-            <p class="card-text">Variedades y spread por región en tiempo real.</p>
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Tablero de precios por empaque</h5>
+          </div>
+          <div class="table-responsive">
+            <table class="table mb-0">
+              <thead>
+                <tr><th>Empacadora</th><th>Precio (MXN/kg)</th><th></th></tr>
+              </thead>
+              <tbody id="table-empaque"></tbody>
+            </table>
           </div>
         </div>
       </div>
+      <!-- Por gramaje -->
       <div class="col-md-6">
-        <div class="card h-100 shadow-sm border-0 text-center">
-          <img src="https://images.unsplash.com/photo-1523475496153-3dec8675db88?auto=format&fit=crop&w=600&q=60"
-               class="card-img-top" alt="Precio por gramaje">
-          <div class="card-body">
-            <h5 class="card-title">Precio por gramaje</h5>
-            <p class="card-text">Elige tu peso y ve el costo, tanto nacional como de exportación.</p>
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Precio por gramaje</h5>
+          </div>
+          <div class="table-responsive">
+            <table class="table mb-0">
+              <thead>
+                <tr><th>Gramaje (g)</th><th>Precio (MXN)</th><th></th></tr>
+              </thead>
+              <tbody id="table-gramaje"></tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Productores -->
-  <section class="bg-white py-5 border-top">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-5">
-          <img src="https://images.unsplash.com/photo-1514516870926-20539ff3229d?auto=format&fit=crop&w=700&q=60"
-               class="img-fluid rounded shadow-sm" alt="Productor de aguacate">
-        </div>
-        <div class="col-lg-7">
-          <h2 class="mb-3">Productores: publica tu fruta en 3 minutos</h2>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <strong>Tipo & Calidad:</strong> Hass, criollo u orgánico.
-            </li>
-            <li class="list-group-item">
-              <strong>Gramaje:</strong> ingresa el peso en gramos de tu lote.
-            </li>
-            <li class="list-group-item">
-              <strong>Origen:</strong> nacional o exportación.
-            </li>
-            <li class="list-group-item">
-              <strong>Fotos del lote:</strong> sube mínimo 2 (caja y corte).
-            </li>
-            <li class="list-group-item">
-              <strong>Verificación:</strong> selfie + INE para productores, constancia fiscal para comercializadoras.
-            </li>
-            <li class="list-group-item">
-              <strong>Disponibilidad:</strong> tu lote aparece al instante ante empacadoras suscritas.
-            </li>
-          </ul>
-          <a class="btn btn-ac btn-lg mt-3" href="#">Quiero vender mi lote</a>
+  <!-- Recomendaciones -->
+  <section class="container border-top py-5">
+    <h2 class="text-center">Recomendaciones de empacadoras</h2>
+    <div class="row g-4 mt-3">
+      <!-- ejemplo de card -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <img src="https://images.unsplash.com/photo-1582474748321-98f55f4f8503?auto=format&fit=crop&w=600&q=60"
+               class="card-img-top" alt="Empacadora Nacional"/>
+          <div class="card-body">
+            <h5 class="card-title">Empacadora México</h5>
+            <p class="card-text">Para fruta nacional, certificación C-123.</p>
+          </div>
         </div>
       </div>
+      <!-- repite para más -->
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-dark text-white py-3 text-center">
+  <footer class="bg-dark text-white text-center py-3">
     <small>&copy; 2025 AvoConnect · Hecho en Uruapan con ❤️ y mucho aguacate</small>
   </footer>
 
+  <!-- Scripts -->
+  <script>
+    const isDirector = true;
+    const dataByEmpaque = [
+      { name: 'Empacadora A', price: 22 },
+      { name: 'Empacadora B', price: 20 },
+      { name: 'Empacadora C', price: 18 }
+    ];
+    const dataByGramaje = [
+      { gramos: 50, price: 10 },
+      { gramos: 70, price: 14 },
+      { gramos: 100, price: 20 }
+    ];
+    function populateTable(id, items, mode) {
+      const tbody = document.querySelector(`#${id}`);
+      items.sort((a,b)=>b.price-a.price).forEach(item=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = mode==='empaque'
+          ? `<td>${item.name}</td><td>${item.price.toFixed(2)}</td>
+             <td>${isDirector?'<button class="btn btn-sm btn-primary">Editar</button>':''}</td>`
+          : `<td>${item.gramos}</td><td>${item.price.toFixed(2)}</td>
+             <td>${isDirector?'<button class="btn btn-sm btn-primary">Editar</button>':''}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+    document.addEventListener('DOMContentLoaded',()=>{
+      populateTable('table-empaque', dataByEmpaque, 'empaque');
+      populateTable('table-gramaje', dataByGramaje, 'gramaje');
+    });
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
