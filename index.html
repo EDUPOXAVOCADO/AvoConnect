@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AvoConnect | Precios de aguacate & Venta de lotes</title>
+
+  <!-- Bootstrap 5 -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Inter Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --ac-green: #3fa34d;
+      --ac-dark: #20341d;
+      --ac-light: #f7fdfa;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ac-light);
+      color: var(--ac-dark);
+    }
+    .navbar {
+      background: var(--ac-green);
+    }
+    .btn-ac {
+      background: var(--ac-green);
+      color: #fff;
+      border: none;
+    }
+    .btn-ac:hover {
+      background: #2e7e3a;
+    }
+    h1, h2, h3, h4 {
+      font-weight: 600;
+    }
+    .shadow-sm {
+      box-shadow: 0 6px 12px rgba(0,0,0,.05) !important;
+    }
+    .list-group-item {
+      border: none;
+      padding-left: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegación -->
+  <nav class="navbar px-3">
+    <span class="navbar-brand mb-0 h1 text-white fw-bold">🥑 AvoConnect</span>
+  </nav>
+
+  <!-- Hero -->
+  <section class="container text-center py-5">
+    <h1 class="display-5">Precios de aguacate, al minuto.</h1>
+    <p class="lead">
+      Compara lo que paga cada empacadora, recibe alertas de mercado y cierra tratos directo desde tu celular.
+    </p>
+    <a class="btn btn-ac btn-lg" href="#">Avísenme cuando salga</a>
+  </section>
+
+  <!-- Beneficios -->
+  <section class="container py-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="https://images.unsplash.com/photo-1524594155901-436fc637b87c?auto=format&fit=crop&w=600&q=60"
+               class="card-img-top" alt="Precios al minuto">
+          <div class="card-body text-center">
+            <h5 class="card-title">Tablero de precios</h5>
+            <p class="card-text">Variedades, gramajes y spread por región en tiempo real.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="https://images.unsplash.com/photo-1523475496153-3dec8675db88?auto=format&fit=crop&w=600&q=60"
+               class="card-img-top" alt="Ranking empacadoras">
+          <div class="card-body text-center">
+            <h5 class="card-title">Ranking de empacadoras</h5>
+            <p class="card-text">Quién paga mejor y a tiempo, basado en reviews verificadas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=60"
+               class="card-img-top" alt="Logística integrada">
+          <div class="card-body text-center">
+            <h5 class="card-title">Logística integrada</h5>
+            <p class="card-text">Cotiza fletes y reserva transporte sin salir de la app.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Productores -->
+  <section class="bg-white py-5 border-top">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-5">
+          <img src="https://images.unsplash.com/photo-1514516870926-20539ff3229d?auto=format&fit=crop&w=700&q=60"
+               class="img-fluid rounded shadow-sm" alt="Productor de aguacate">
+        </div>
+        <div class="col-lg-7">
+          <h2 class="mb-3">Productores: publica tu fruta en 3 minutos</h2>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Tipo & Calidad:</strong> Hass, criollo u orgánico.
+            </li>
+            <li class="list-group-item">
+              <strong>Gramaje:</strong> 60-70 g, 71-95 g, súper, extra…
+            </li>
+            <li class="list-group-item">
+              <strong>Fotos del lote:</strong> sube mínimo 2 (caja y corte).
+            </li>
+            <li class="list-group-item">
+              <strong>Verificación:</strong> selfie + INE para productores, constancia fiscal para comercializadoras.
+            </li>
+            <li class="list-group-item">
+              <strong>Disponibilidad:</strong> tan pronto subas tu lote, llegará a empacadoras suscritas.
+            </li>
+          </ul>
+          <a class="btn btn-ac btn-lg mt-3" href="#">Quiero vender mi lote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-3 text-center">
+    <small>&copy; 2025 AvoConnect · Hecho en Uruapan con ❤️ y mucho aguacate</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
