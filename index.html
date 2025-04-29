@@ -19,9 +19,7 @@
     .header-banner { height: 6px; background: var(--ac-green); }
     header.main-header { background: var(--ac-green-dark); color: #fff; padding: 1rem 0; text-align: center; }
     #site-title { font-size: 2rem; font-weight: 600; margin-left: 0.5rem; vertical-align: middle; }
-    #avocado { font-size: 2rem; vertical-align: middle;
-      animation: walk 2s ease-out forwards, sway 1s ease-in-out 1 2.5s forwards; display: inline-block; transform: translateX(-200px);
-    }
+    #avocado { font-size: 2rem; vertical-align: middle; animation: walk 2s ease-out forwards, sway 1s ease-in-out 1 2.5s forwards; display: inline-block; transform: translateX(-200px); }
     @keyframes walk { to { transform: translateX(0); } }
     @keyframes sway { 0%{transform:translateX(0) rotate(0deg);}25%{transform:translateX(0) rotate(15deg);}75%{transform:translateX(0) rotate(-15deg);}100%{transform:translateX(0) rotate(0deg);} }
     nav.nav-apartados { background: var(--ac-green); padding: 0.5rem 0; }
@@ -33,7 +31,7 @@
     section#informacion h2, section#price-chart h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
     blockquote { font-style: italic; color: var(--ac-green-dark); border-left: 4px solid var(--ac-green); padding-left: 1rem; }
     /* Gráfica */
-    section#price-chart .ratio { max-width: 100%; height: 400px; }
+    
     footer { background: var(--ac-dark); color: #fff; text-align: center; padding: 1rem 0; }
   </style>
 </head>
@@ -101,19 +99,17 @@
     </div>
   </section>
 
-  <!-- Gráfica histórica de precios -->
+  <!-- Gráfica histórica de exportaciones -->
   <section id="price-chart" class="container py-5">
-    <h2>Evolución del precio del aguacate de exportación (calibre super) en México</h2>
-    <!-- Gráfico interactivo desde FRED -->
+    <h2>Evolución de exportaciones de aguacate (fresco/seco) desde México</h2>
+    <!-- Gráfico interactivo de Trading Economics -->
     <div class="ratio ratio-16x9">
       <iframe
-        src="https://fred.stlouisfed.org/graph/graph-embed.html?id=WPU01110205"
+        src="https://tradingeconomics.com/mexico/exports-of-avocados-fresh-or-dried?embed=1"
         width="100%" height="100%" frameborder="0">
       </iframe>
     </div>
-    <p class="text-muted mt-2" style="font-size:0.9rem;">
-      Fuente: U.S. Bureau of Labor Statistics via FRED
-    </p>
+    <p class="text-muted mt-2" style="font-size:0.9rem;">Fuente: Trading Economics</p>
   </section>
 
   <!-- Secciones para contenido futuro -->
@@ -128,6 +124,8 @@
     <small>&copy; 2025 AvoConnect · Hecho en Uruapan con ❤️</small>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
 </body>
 </html>
